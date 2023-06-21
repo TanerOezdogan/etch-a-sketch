@@ -1,8 +1,10 @@
-#container {
+.container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 36rem;
+    justify-items: center;
+}
+
+.row {
+    margin: 2px;
 }
 
 .innerDivs {

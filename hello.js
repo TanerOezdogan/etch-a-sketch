@@ -1,25 +1,28 @@
 const container = document.createElement("div");
-document.body.appendChild(container);
 
-container.setAttribute("id", "container");
+container.classList.add("container")
 function createDivs(number) {
-    if(number <= 100) {
-        for(let y = 1; y <= number; y++) {
-            for(let i = 1; i <= number; i++) {
-                let divs = document.createElement("div");
-                divs.classList.add("innerDivs")
-                container.appendChild(divs);
+    if(number <= 100) {                                                                                                     //limit the number to save resources
+        for(let i = 1; i <= number; i++) {                                                                         //create a column + add class "column"
+            const column = document.createElement("div");
+            column.classList.add("column");
+            for(let y = 1; y <= number; y++) {                                                                     //create a row + add class "row",  "inner Divs"
+                const row = document.createElement("div");
+                row.classList.add("row", "innerDivs");
+                column.appendChild(row);                                                                                    //add row to column
             }
+            container.appendChild(column);                                                                                  //add column to container
         }
+        document.body.appendChild(container);                                                                               //add everything to the document body
     }
-    const cells = document.querySelectorAll(".innerDivs");
+    const cells = document.querySelectorAll(".innerDivs");                                     //select all elements containing class "innerDivs" + addEventListener to color each div on mousenter
     cells.forEach(cell=>cell.addEventListener("mouseenter", addClassName));
 }
 createDivs(16);
 
-const cells = document.querySelectorAll(".innerDivs");
 
-function addClassName() {
+
+function addClassName() {                                                                                             //callback function for Eventlistener to add and remove class
     if(!this.classList.contains("mouseover")) {
         this.classList.add("mouseover");
     } else {
@@ -28,11 +31,9 @@ function addClassName() {
 
 }
 
-cells.forEach(cell=>cell.addEventListener("mouseenter", addClassName));
-
 const button = document.querySelector("button")
 
-function createNewGrid() {
+function createNewGrid() {                                                                                            //function for the button to create a new grid
     let gridSize = prompt("?^2")
     document.querySelectorAll(".innerDivs").forEach(e => e.remove());
     createDivs(gridSize);
