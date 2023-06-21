@@ -1,0 +1,20 @@
+#container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 36rem;
+}
+
+.innerDivs {
+    border: darkblue 1px solid;
+    height: 2rem;
+    width: 2rem;
+}
+
+.mouseover {
+    background-color: darkblue;
+}
+
+.button {
+    margin: 1rem;
+}
